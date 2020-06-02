@@ -21,6 +21,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.init_ui()
 
+        self.setWindowTitle("md_dihedrals version ({})".format(__version__))
+
+        # Update the status bar
+        self.statusBar().showMessage("md_dihedrals version {}".format(__version__))
+
     def build_events(self):
         """Set the signal:slots of the main window
         """
@@ -140,6 +145,8 @@ class MainWindow(QtWidgets.QMainWindow):
         self._residues.clear()
         self._residues.addItems(self._xvg_contents.keys())
 
+        self.statusBar().showMessage("dihedrals directory: {}".format(self._dihedrals_dir))
+
     def plot_1d(self, chi_file):
 
         reader = XVGReader(chi_file)
@@ -147,6 +154,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self._axes.clear()
         self._axes.set_xlabel('frame (a.u.)')
         self._axes.set_ylabel('angle (deg)')
+        self._axes.set_ylim([-180.0, 180.0])
 
         self._axes.plot(reader.x, reader.y)
 
@@ -168,9 +176,9 @@ class MainWindow(QtWidgets.QMainWindow):
         plot = self._axes.imshow(hist, aspect='equal', origin='lower')
         self._axes.set_xlabel('{} (deg)'.format(selected_chis[0]))
         self._axes.set_ylabel('{} (deg)'.format(selected_chis[1]))
-        ticks = range(-180, 181, 10)
+        ticks = range(-180, 181, 20)
         self._axes.set_xticks(np.linspace(0, n_bins, len(ticks)))
-        self._axes.set_xticklabels(ticks)
+        self._axes.set_xticklabels(ticks, rotation=45)
         self._axes.set_yticks(np.linspace(0, n_bins, len(ticks)))
         self._axes.set_yticklabels(ticks)
         self._figure.colorbar(plot)
