@@ -1,3 +1,8 @@
+version 0.0.1
+--------------
+* CHANGED the ylim of the 1D plot are now [-180,180]
+* CHANGED the x ticks of the 2D plot are now rotated by 45 deg
+
 version 0.0.0
 --------------
 * ADDED GUI
