@@ -8,6 +8,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from matplotlib.pyplot import Figure
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg, NavigationToolbar2QT
 
+import md_dihedrals
 from md_dihedrals.__pkginfo__ import __version__
 from md_dihedrals.readers.dihedrals_file import parse_dihedrals_directory
 from md_dihedrals.readers.xvg_reader import XVGReader
@@ -22,6 +23,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.init_ui()
 
         self.setWindowTitle("md_dihedrals version ({})".format(__version__))
+
+        icon_path = os.path.join(md_dihedrals.__path__[0], "icons", "icon.jpg")
+        self.setWindowIcon(QtGui.QIcon(icon_path))
 
         # Update the status bar
         self.statusBar().showMessage("md_dihedrals version {}".format(__version__))

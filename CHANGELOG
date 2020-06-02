@@ -1,3 +1,8 @@
+version 0.0.2
+--------------
+* ADDED   main window icon
+* ADDED   requirements.txt file
+
 version 0.0.1
 --------------
 * CHANGED the ylim of the 1D plot are now [-180,180]
