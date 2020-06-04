@@ -1,3 +1,10 @@
+version 0.0.3
+--------------
+* CHANGED requirements.txt file
+* ADDED   launching script
+* ADDED   install dependencies in the setup file
+
+
 version 0.0.2
 --------------
 * ADDED   main window icon
