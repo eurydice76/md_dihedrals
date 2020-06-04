@@ -238,11 +238,3 @@ class MainWindow(QtWidgets.QMainWindow):
         self._chis.clear()
         self._chis.addItems(self._xvg_contents[current_residue])
 
-
-if __name__ == "__main__":
-
-    app = QtWidgets.QApplication(sys.argv)
-
-    window = MainWindow()
-
-    sys.exit(app.exec_())

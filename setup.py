@@ -1,9 +1,9 @@
 import fnmatch
+import glob
 import os
 
 from distutils.util import convert_path
-from distutils.core import setup
-
+from setuptools import setup
 
 def find_packages(path, base=None):
 
@@ -79,11 +79,18 @@ package = find_packages(path="src", base="md_dihedrals")
 
 package_data = find_package_data(where='src', package='md_dihedrals')
 
-print(package_data)
+#################################
+# Scripts section
+#################################
+
+scripts = glob.glob(os.path.join('scripts','*'))
 
 #################################
 # The setup section
 #################################
+
+with open('requirements.txt','r') as fin:
+	deps = fin.readlines()
 
 setup(name="md_dihedrals",
       version=package_info["__version__"],
@@ -94,7 +101,9 @@ setup(name="md_dihedrals",
       maintainer=package_info["__maintainer__"],
       maintainer_email=package_info["__maintainer_email__"],
       license=package_info["__license__"],
+      install_requires=deps,
       packages=package,
       package_data=package_data,
       package_dir={"md_dihedrals": "src"},
-      platforms=['Unix', 'Windows'])
+      platforms=['Unix', 'Windows'],
+      scripts=scripts)
