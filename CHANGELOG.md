@@ -1,3 +1,7 @@
+version 0.0.5
+--------------
+* CHANGED changed file hierarchy
+
 version 0.0.4
 --------------
 * CHANGED requirements.txt file
